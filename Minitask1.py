@@ -9,27 +9,29 @@
 #
 # Пример: 10 -> 2 (т.к. 10 - это 0...1010)
 # -123 -> 3 (т.к. -123 - это 1...0000101)
-def negnumber(n,count):
+def neg_number(n, count) -> int:
     n = abs(n)
-    F = True#You need to find first
-    while (n):
-        if (n % 2):
-            F= False
-        elif (F==False):
+    flag = True  # You need to find first 1
+    while n:
+        if n % 2:
+            flag = False  # to check if its 1 and skip counting
+        elif not flag:
             count += 1
         n >>= 1
-    return count+1
-def posnumber(n,count):
+    return count + 1
+
+
+def pos_number(n, count) -> int:
     while n:
-        count+= n%2
-        n>>=1
+        count += n % 2
+        n >>= 1
     return count
-n=int(input("Enter you number:"))
-count=0
-if(n<0):
-    count=1+negnumber(n,count)
-    print("Your bytes="+str(count))
+
+
+n = int(input("Enter you number:"))
+count = 0
+if n < 0:
+    count = 1 + neg_number(n, count)
 else:
-    count=posnumber(n,count)
-    print("Your bytes="+str(count))
-print(count)
+    count = pos_number(n, count)
+print(f"Your bytes={count}")

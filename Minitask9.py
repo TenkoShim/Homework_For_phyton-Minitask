@@ -16,3 +16,4 @@ algos = ["quick sort", "merge sort", "bubble sort"]
 results = [[1.23, 1.56, 2.0], [3.3, 2.9, 3.9]]
 
 format_table(benchmarks, algos, results)
+##без библиотеки

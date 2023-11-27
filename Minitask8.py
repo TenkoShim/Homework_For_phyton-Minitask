@@ -6,6 +6,7 @@ def deprecated(since=None, when_removed=None):
         @functools.wraps(func)
         def wrapper(*args, **kwargs):
             name = func.__name__
+
             if since and when_removed:
                 message = f"Warning: function {name} is deprecated since version {since}. It will be removed in version {when_removed}"
             elif since:
@@ -23,7 +24,7 @@ def deprecated(since=None, when_removed=None):
     return decorator
 
 
-@deprecated(since="1.0", when_removed="2.0")
+@deprecated
 def my_function():
     print("This is a deprecated function")
 
