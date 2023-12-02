@@ -1,13 +1,19 @@
-a=input("Enter your elements")
-result=[]
-b=[]
+a = input("Enter your elements: ")
+result, numbers, number = [], [], ''
+
 for i in range(len(a)):
-    if(a[i]=="|"):
-        result.append(b)
-        b=[]
+    if a[i] == "|":
+        result.append(numbers)
+        numbers = []
         continue
-    if(a[i]!=" "):
-        b.append(int(a[i]))
-if(len(b)!=0):
-    result.append(b)
-print(result[0][1])
+    if a[i] == " " and number != '':
+        numbers.append(float(number))
+        print(numbers)
+        number = ''
+    else:
+        number += a[i]
+
+if numbers:
+    numbers.append(float(number))
+    result.append(numbers)
+print(result)
