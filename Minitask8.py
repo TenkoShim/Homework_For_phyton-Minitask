@@ -1,7 +1,12 @@
+# Мини-задача #8
+
+# Реализовать декоратор @deprecated, который отмечает
+# функцию, как устаревшую.
+#
+# У декоратора есть два опциональных параметра since и
+# will_be_removed.
 import functools
-
-
-def deprecated(func=None,*,since=None, when_removed=None):
+def deprecated(func=None, *, since=None, when_removed=None):
     def decorator(func):
         @functools.wraps(func)
         def wrapper(*args, **kwargs):
