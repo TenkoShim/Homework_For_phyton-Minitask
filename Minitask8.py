@@ -1,11 +1,11 @@
 import functools
 
 
-def deprecated(since=None, when_removed=None):
+def deprecated(func=None,*,since=None, when_removed=None):
     def decorator(func):
         @functools.wraps(func)
         def wrapper(*args, **kwargs):
-            name = func.__name__
+            name = wrapper.__name__
 
             if since and when_removed:
                 message = f"Warning: function {name} is deprecated since version {since}. It will be removed in version {when_removed}"
@@ -21,7 +21,10 @@ def deprecated(since=None, when_removed=None):
 
         return wrapper
 
-    return decorator
+    if func is None:
+        return decorator
+    else:
+        return decorator(func)
 
 
 @deprecated
