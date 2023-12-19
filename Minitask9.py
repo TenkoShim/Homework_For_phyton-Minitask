@@ -17,6 +17,7 @@ def format_table(benchmarks, algos, results) -> str:
     benchmarks.append("Benchmark")
     length_of_columns.append(max(map(len, benchmarks)))  # max length of column
     benchmarks.remove("Benchmark")
+    # getting length of every column
     for i in range(len(algos)):
         alg = algos[i]
         column_info = [str(result[i]) for result in results]
